@@ -65,6 +65,9 @@ kramdown:
 # Netease settings
 # netease_comment: false
 
+# Gitalk
+clientID: 'ad3b09553c8062cf8de4'
+clientSecret: '42861ccea8d029ae68471c0bcd9c21d999850b21'
 
 
 # Analytics settings
