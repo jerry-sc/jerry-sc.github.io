@@ -6,7 +6,6 @@ date: 2017-02-11
 author: Jerry
 header-style: text
 catalog: true
-categories: [work]
 tags:
 - Java
 ---
