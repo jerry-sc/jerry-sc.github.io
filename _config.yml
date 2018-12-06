@@ -72,11 +72,11 @@ clientSecret: '42861ccea8d029ae68471c0bcd9c21d999850b21'
 
 # Analytics settings
 # Baidu Analytics 
-# ba_track_id: [your track id]
+ba_track_id: 06c0b399a9d481358d5065943a026297
 
 # Google Analytics
-ga_track_id: 'UA-130407812-1'            # Format: UA-xxxxxx-xx
-ga_domain: shenchao.me
+# ga_track_id: 'UA-130407812-1'            # Format: UA-xxxxxx-xx
+# ga_domain: shenchao.me
 
 
 
