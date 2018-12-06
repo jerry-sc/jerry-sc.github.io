@@ -53,9 +53,9 @@ layout: default
                 <hr style="visibility: hidden;">
 
                 <!-- Gitalk -->
-                <div class="comment">
+                <!-- <div class="comment">
                     <div id="gitalk-container"></div>
-                </div>
+                </div> -->
 
                 {% if site.disqus_username %}
                 <!-- disqus 评论框 start -->
@@ -88,6 +88,13 @@ layout: default
                 </div>
             </div>
         {% endif %}
+
+        <div class="
+            col-lg-8 col-lg-offset-2
+            col-md-10 col-md-offset-1
+            sidebar-container">
+                <div id="gitalk-container"></div>
+        </div>
 
     <!-- Sidebar Container -->
         <div class="
@@ -157,7 +164,8 @@ layout: default
         admin: ['jerry-sc'],
         id: md5(location.pathname),      // Ensure uniqueness and length less than 50
         distractionFreeMode: false,  // Facebook-like distraction free mode
-        body: location.href + "Comments is Powered by <a href='https://github.com/gitalk/gitalk' target='_blank'>Gitalk</a>"
+        body: location.href + "<br><br> Comments is Powered by <a href='https://github.com/gitalk/gitalk' target='_blank'>Gitalk</a>",
+        labels: []
     });
     gitalk.render('gitalk-container');
 </script>
