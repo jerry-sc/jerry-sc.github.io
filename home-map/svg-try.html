@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jVectorMap demo</title>
+  <link rel="stylesheet" href="./jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./jquery-jvectormap-2.0.3.min.js"></script>
+  <script src="./jquery-jvectormap-world-mill.js"></script>
+  <!-- Required to convert named colors to RGB -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvg/1.4/rgbcolor.min.js"></script>
+  <!-- Optional if you want blur -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stackblur-canvas/1.4.1/stackblur.min.js"></script>
+  <!-- Main canvg code -->
+  <script src="https://cdn.jsdelivr.net/npm/canvg/dist/browser/canvg.min.js"></script>
+</head>
+<body>
+  
+  <div id="world-map" style="width: 3000px; height: 1000px;"></div>
+
+  <!-- <canvas id="canvas" width="1420px" height="415px"></canvas> -->
+  
+  <script>
+    var gdpData = {
+      "CN": 16.63,
+      "AU": 35.58,
+      "US": 158.97,
+    };
+    $(function(){
+      $('#world-map').vectorMap({
+        map: 'world_mill',
+        zoomOnScroll: false,
+        zoomButtons : false,
+        backgroundColor: "#384452",
+        regionStyle: {
+          initial: {
+            fill: '#4C5764',
+            "fill-opacity": 1,
+            "stroke": '#4C5764',
+            "stroke-width": 1,
+            "stroke-opacity": 1
+          },
+
+        },
+        series: {
+          regions: [{
+            values: gdpData,
+            scale: ['#868f96', '#ACB3BA'],
+            normalizeFunction: 'polynomial',
+          }]
+        },
+      });
+
+      // svg = $("svg").prop("outerHTML")
+      // canvg('canvas', svg);
+    });
+
+  
+    
+  </script>
+</body>
+</html>

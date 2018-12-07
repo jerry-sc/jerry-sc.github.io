@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jVectorMap demo</title>
+  <link rel="stylesheet" href="./jquery-jvectormap-2.0.3.css" type="text/css" media="screen"/>
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+  <script src="./jquery-jvectormap-2.0.3.min.js"></script>
+  <script src="./jquery-jvectormap-world-mill.js"></script>
+</head>
+<body>
+  
+  <div id="world-map" style="width: 3000px; height: 1000px;"></div>
+
+  <script>
+    $.getJSON("./visit_data.js", function(visit_data) {
+      $('#world-map').vectorMap({
+        map: 'world_mill',
+        zoomOnScroll: false,
+        zoomButtons : false,
+        backgroundColor: "#384452",
+        regionStyle: {
+          initial: {
+            fill: '#4C5764',
+            "fill-opacity": 1,
+            "stroke": '#4C5764',
+            "stroke-width": 1,
+            "stroke-opacity": 1
+          },
+
+        },
+        series: {
+          regions: [{
+            values: visit_data,
+            scale: ['#868f96', '#ACB3BA'],
+            normalizeFunction: 'polynomial',
+          }]
+        },
+      });
+    });
+  </script>
+</body>
+</html>
