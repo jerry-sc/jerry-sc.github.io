@@ -81,8 +81,8 @@ ba_track_id: 06c0b399a9d481358d5065943a026297
 
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
-sidebar-about-description: "强迫症、拖延症重度患者"
-sidebar-avatar: /img/avatar-jerry.png      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "The more I see<br>the less I know for sure"
+sidebar-avatar: /img/avatar-jerry.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
