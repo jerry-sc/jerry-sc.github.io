@@ -427,3 +427,20 @@ MPLS-VPN综合和IP转发模式和ATM的标签转发模式的优势，性能较�
 [这篇文章讲述了墙的工作原理、以及VPN,VPS等概念](https://medium.com/@thomas_summon/浅谈vpn-vps-proxy以及shadowsocks之间的联系和区别-b0198f92db1b)
 
 [这篇文章介绍了shadowsocks的工作原理](https://yuerblog.cc/2016/11/23/the-principles-of-shadowsocks/)
+
+## 移动网络
+
+手机上网的流程大致如下：
+1. 手机发送无线信号与距离最近的基站相连
+2. 基站分为两部分，一部分对外提供无线通信，叫做基站收发信台；另一部分对内连接有线网络，叫做基站控制器。基站收发信台通过无线收到数据后，转发给基站控制器
+3. 基站控制器通过有线网络，连接到提供手机业务的运营商数据中心，称为核心网。
+4. 核心网还未与互联网连接，这里需要对接入设备进行验证、计费等，所有能成功后，才真正接入互联网
+
+事实上，2G走的还是电话网，直到3G之后才开始走的IP网络。
+
+[5G介绍](https://mp.weixin.qq.com/s?__biz=Mjc1NjM3MjY2MA==&mid=2691354000&idx=2&sn=2e5714f28f3ab8b39acc91f5a125b80d&chksm=a9eb724b9e9cfb5daa96c38ff7f459127f2aaf846e3ad8b533f3360702b197ea77de6748373c&mpshare=1&scene=1&srcid=0110aZWiPUiBe6DA22Wk74oL#rd)
+
+### 关于国外移动上网问题
+
+在国外，如果用的还是国内的手机卡，那么虽然用的是人家外国的基站，但是还是回回到国内给你做校验，收费，实际接入的还是国内的网络，也就无法翻墙了。
+
