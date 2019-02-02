@@ -551,3 +551,47 @@ dentry行表示目录项缓存，inode_cache行表示VFS索引节点缓存。其
 - IOPS。每秒的IO请求数
 - 吞吐量。指每秒的IO请求大小
 - 响应时间。指IO请求发出到响应的时间间隔。
+
+## IO总结
+
+![io_indices](/img/post/linux_performance/io-indices.png)
+
+![ioindices2tools](/img/post/linux_performance/ioindices2tools.png)
+
+![tools2ioindices](/img/post/linux_performance/tools2ioindices.png)
+
+IO问题发现处理流程
+1. 先用iostat发现磁盘IO性能瓶颈
+2. 再借助pidstat，定位出导致瓶颈的进程
+3. 随后分析进程的IO行为
+4. 集合应用程序原理，分析IO来源
+
+![io_procedure](/img/post/linux_performance/io-procedure.png)
+
+## 磁盘IO性能优化
+
+### 应用程序优化
+
+- 可以用追加写代替随机写，减少寻址开销，加快IO写速度
+- 可以借助缓存IO，充分利用系统缓存，降低实际IO次数
+- 可以在应用程序内部构建自己的缓存。例如使用redis这样的外部缓存；或者如C标准库提供的fopen、fread等库函数，都会利用标准库的缓存，减少系统调用与磁盘操作
+- 在需要频繁读写同一块磁盘空间时，可以用mmap代替 read/write，减少内存拷贝次数
+- 在多个应用程序共享相同磁盘时，为了保证IO不被某个应用完全占用，推荐使用cgroups的IO子系统，来隔离进程资源
+- 在使用CFQ调度器时，可以用ionice来调整进程的IO调度优先级，特别是提高核心应用的IO优先级
+
+
+### 文件系统优化
+
+- 根据实际负载场景的不同，选择最适合的文件系统
+- 在选好文件系统后，还可以进一步优化文件系统的配置选项
+- 优化文件系统缓存。如优化pdflush脏页的刷新频率；优化内核的回收目录项缓存和索引节点缓存的倾向
+- 在不需要持久化时，还可以用内存文件系统tmpfs，以获得更好的IO性能
+
+### 磁盘优化
+
+- SSD代替HDD
+- 使用RAID，提高数据可靠性，也提高数据访问性能
+- 选择合适的IO调度算法
+- 对应用程序的数据，进行磁盘级别隔离。比如为日志、数据库等IO压力比较重的应用，配置单独的磁盘
+- 在顺序读比较多的场景中，可以增大磁盘的预读数据
+- 可以优化内核块设备IO选项。如可以调整磁盘队列长度，适当增大队列长度，可以提升磁盘吞吐量，但同时也会导致IO延迟增大
